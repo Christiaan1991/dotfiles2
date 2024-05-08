@@ -1,0 +1,33 @@
+# ingnore everything
+/*
+
+# but not these files 
+!.gitignore
+# !.markdownlintrc
+!.gitconfig
+!.profile
+# !.tmux.conf
+!.wezterm.lua
+!.stylua.toml
+
+# top-to-bottom sequence is important; last match to a file is valid
+# allow scanning into /.config/
+!/.config/
+# disallow everything in /.config/
+/.config/*
+# except these directories
+!/.config/nvim/
+# !/.config/kitty/
+!/.config/fish/
+!/.config/wezterm/
+!/.config/zellij/
+
+# ignore fish dir contents
+/.config/fish/*
+# except these files
+!/.config/fish/config.fish
+
+# ignore nvim dir contents
+/.config/nvim/*
+# except these directories
+!/.config/nvim/lua/
