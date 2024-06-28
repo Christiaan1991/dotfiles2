@@ -1,0 +1,35 @@
+layout {
+    default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        children
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+    tab name="Workspace" focus=true {
+        pane {
+            cwd "/home/christiaan/Documents/Innius/bitbucket.org/innius/"
+        }
+    }
+    tab name="Configuration" {
+        pane {
+            name "nvim"
+            cwd "/home/christiaan/.config/nvim"
+            command "nvim"
+            args "."
+        }
+        pane {
+            name "zellij"
+            cwd "/home/christiaan/.config/zellij"
+            command "nvim"
+            args "."
+        }
+    }
+    tab name="System Process" {
+        pane {
+            command "htop"
+        }
+    }
+}

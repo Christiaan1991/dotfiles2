@@ -216,9 +216,9 @@ simplified_ui false
 //
 pane_frames true
 
-// Choose the theme that is specified in the themes section.
-theme "catppuccin-mocha"
-
 // The folder in which Zellij will look for themes
 //
 theme_dir "/home/christiaan/.config/zellij/themes"
+
+// Choose the theme that is specified in the themes section.
+theme "catppuccin-mocha"

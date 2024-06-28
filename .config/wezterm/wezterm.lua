@@ -13,6 +13,8 @@ local wezterm = require("wezterm")
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+local mux = wezterm.mux
+
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
@@ -21,11 +23,39 @@ config.color_scheme = "Catppuccin Macchiato"
 -- Change the font to Jetbrain Mono
 config.font = wezterm.font("JetBrains Mono")
 
+-- Change padding of the window
+config.window_padding = {
+	left = 2,
+	right = 2,
+	top = 0,
+	bottom = 0,
+}
+
+-- Remove title bar
+config.window_decorations = "NONE"
+
+-- Background image
+config.window_background_image = "/home/christiaan/wallpapers/trumpet-blurred-terminal-wallpapers.jpg"
+
+-- Background settings
+config.window_background_image_hsb = {
+	-- Darken the background image by reducing it to 1/3rd
+	brightness = 0.2,
+
+	-- You can adjust the hue by scaling its value.
+	-- a multiplier of 1.0 leaves the value unchanged.
+	hue = 1.0,
+
+	-- You can adjust the saturation also.
+	saturation = 1.0,
+}
+
+-- Tab bar layout
 config.colors = {
 	tab_bar = {
 		-- The color of the strip that goes along the top of the window
 		-- (does not apply when fancy tab bar is in use)
-		background = "#0b0022",
+		background = "rgba(0,0,0,0)",
 
 		-- The active tab is the one that has focus in the window
 		active_tab = {
@@ -46,7 +76,7 @@ config.colors = {
 
 			-- Specify whether you want the text to be italic (true) or not (false)
 			-- for this tab.  The default is false.
-			italic = true,
+			italic = false,
 
 			-- Specify whether you want the text to be rendered with strikethrough (true)
 			-- or not for this tab.  The default is false.
@@ -95,29 +125,13 @@ config.colors = {
 	},
 }
 
-config.tab_bar_at_bottom = true
-config.hide_tab_bar_if_only_one_tab = false
 config.use_fancy_tab_bar = false
--- Padding
-config.inactive_pane_hsb = {
-	saturation = 0.2,
-	brightness = 0.8,
-}
 
--- Background image
-config.window_background_image = "/home/christiaan/wallpapers/trumpet-blurred-terminal-wallpapers.jpg"
-
-config.window_background_image_hsb = {
-	-- Darken the background image by reducing it to 1/3rd
-	brightness = 0.2,
-
-	-- You can adjust the hue by scaling its value.
-	-- a multiplier of 1.0 leaves the value unchanged.
-	hue = 1.0,
-
-	-- You can adjust the saturation also.
-	saturation = 1.0,
-}
+-- Run Zellij upon startup of Wezterm with the layout in the layout folder of zellij
+wezterm.on("gui-startup", function()
+	local tab, pane, window = mux.spawn_window({})
+	window:gui_window():maximize()
+end)
 
 -- and finally, return the configuration to wezterm
 return config

@@ -11,6 +11,9 @@ alias dil="docker kill"
 alias dip="docker image prune -a --filter " # followed by format: "until=2024-01-01T00:00:00"
 alias dsp="docker system prune"
 
+# gossm
+alias gossm='/opt/gossm'
+
 # golang test directory
 alias got="go test ./..."
 
@@ -27,3 +30,10 @@ alias n="nvim ."
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 thefuck --alias | source
+
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+alias bat="/usr/local/bat/bat"
+
+# zellij shortcut
+alias w="zellij --layout /home/christiaan/.config/zellij/layout/layout.kdl"
